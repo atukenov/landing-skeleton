@@ -13,13 +13,8 @@ export default function Footer() {
 
           {/* Brand column */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-9 h-9 bg-primary-600 rounded flex items-center justify-center shadow-sm">
-                <span className="text-white font-heading font-bold">L</span>
-              </div>
-              <span className="font-heading text-white text-xl font-bold">
-                YourLogo
-              </span>
+            <div className="mb-5">
+              <img src="/logo.png" alt="Caspi Polymer" className="h-10 w-auto object-contain" />
             </div>
 
             <p className="text-sm leading-relaxed max-w-xs text-gray-500">

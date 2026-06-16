@@ -32,7 +32,7 @@ export default function About() {
 
             {/* Floating stat card */}
             <div className="absolute -bottom-6 -right-4 md:-right-6 bg-primary-600 text-white p-6 shadow-2xl rounded-xl w-44">
-              <div className="font-heading text-4xl font-bold">15+</div>
+              <div className="font-heading text-4xl font-bold">{t.about.yearsValue}</div>
               <div className="text-xs text-primary-200 mt-1 leading-tight">
                 {t.about.yearsLabel}
               </div>

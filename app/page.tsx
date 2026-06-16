@@ -1,13 +1,12 @@
-import TopBar     from "@/components/TopBar";
-import Navbar     from "@/components/Navbar";
-import Hero       from "@/components/Hero";
+import About from "@/components/About";
 import Advantages from "@/components/Advantages";
-import Products   from "@/components/Products";
-import About      from "@/components/About";
-import StatsBar   from "@/components/StatsBar";
-import Partners   from "@/components/Partners";
-import Contacts   from "@/components/Contacts";
-import Footer     from "@/components/Footer";
+import Contacts from "@/components/Contacts";
+import Footer from "@/components/Footer";
+import Hero from "@/components/Hero";
+import Navbar from "@/components/Navbar";
+import Partners from "@/components/Partners";
+import Products from "@/components/Products";
+import TopBar from "@/components/TopBar";
 
 export default function Home() {
   return (
@@ -23,7 +22,7 @@ export default function Home() {
         <Advantages />
         <Products />
         <About />
-        <StatsBar />
+        {/* <StatsBar /> */}
         <Partners />
         <Contacts />
       </main>

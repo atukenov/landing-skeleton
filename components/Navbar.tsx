@@ -1,12 +1,12 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
-import { Menu, X, ChevronDown, Globe } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Locale, localeNames } from "@/lib/i18n";
+import { ChevronDown, Globe, Menu, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Navbar() {
   const { locale, setLocale, t } = useLanguage();
-  const [open, setOpen]         = useState(false);
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [dropdown, setDropdown] = useState<string | null>(null);
   const [langOpen, setLangOpen] = useState(false);
@@ -30,8 +30,8 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { label: t.nav.home,        href: "#home" },
-    { label: t.nav.about,       href: "#about" },
+    { label: t.nav.home, href: "#home" },
+    { label: t.nav.about, href: "#about" },
     {
       label: t.nav.products,
       href: "#products",
@@ -39,31 +39,25 @@ export default function Navbar() {
         { label: t.nav.cat1, href: "#products" },
         { label: t.nav.cat2, href: "#products" },
         { label: t.nav.cat3, href: "#products" },
+        { label: t.nav.cat4, href: "#products" },
+        { label: t.nav.cat5, href: "#products" },
       ],
     },
-    { label: t.nav.production,  href: "#production" },
-    { label: t.nav.advantages,  href: "#advantages" },
-    { label: t.nav.contacts,    href: "#contacts" },
+    { label: t.nav.production, href: "#production" },
+    { label: t.nav.advantages, href: "#advantages" },
+    { label: t.nav.contacts, href: "#contacts" },
   ];
 
   return (
     <header
       className={`transition-all duration-300 ${
-        scrolled
-          ? "bg-white/95 backdrop-blur-sm shadow-md"
-          : "bg-white"
+        scrolled ? "bg-white/95 backdrop-blur-sm shadow-md" : "bg-white"
       }`}
     >
       <nav className="section-wrapper flex items-center justify-between h-14 md:h-16 gap-2">
-
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-2.5 group shrink-0">
-          <div className="w-8 h-8 bg-primary-600 rounded flex items-center justify-center shadow-sm">
-            <span className="text-white font-heading font-bold text-base">L</span>
-          </div>
-          <span className="font-heading text-dark-800 text-lg font-bold tracking-tight group-hover:text-primary-600 transition-colors">
-            YourLogo
-          </span>
+        <a href="#home" className="flex items-center shrink-0">
+          <img src="/logo.png" alt="Caspi Polymer" className="h-10 w-auto object-contain" />
         </a>
 
         {/* Desktop nav links */}
@@ -98,11 +92,14 @@ export default function Navbar() {
               </li>
             ) : (
               <li key={link.label}>
-                <a href={link.href} className="nav-link px-3 py-2 rounded hover:bg-primary-50 transition-colors">
+                <a
+                  href={link.href}
+                  className="nav-link px-3 py-2 rounded hover:bg-primary-50 transition-colors"
+                >
                   {link.label}
                 </a>
               </li>
-            )
+            ),
           )}
         </ul>
 
@@ -116,7 +113,10 @@ export default function Navbar() {
             >
               <Globe size={11} />
               {localeNames[locale]}
-              <ChevronDown size={10} className={`transition-transform ${langOpen ? "rotate-180" : ""}`} />
+              <ChevronDown
+                size={10}
+                className={`transition-transform ${langOpen ? "rotate-180" : ""}`}
+              />
             </button>
 
             {langOpen && (
@@ -124,7 +124,10 @@ export default function Navbar() {
                 {(["ru", "kk", "en"] as Locale[]).map((l) => (
                   <button
                     key={l}
-                    onClick={() => { setLocale(l); setLangOpen(false); }}
+                    onClick={() => {
+                      setLocale(l);
+                      setLangOpen(false);
+                    }}
                     className={`w-full text-left px-3 py-1.5 text-xs uppercase tracking-wider font-bold transition-colors ${
                       locale === l
                         ? "text-primary-600 bg-primary-50"
@@ -159,9 +162,14 @@ export default function Navbar() {
                 {(["ru", "kk", "en"] as Locale[]).map((l) => (
                   <button
                     key={l}
-                    onClick={() => { setLocale(l); setLangOpen(false); }}
+                    onClick={() => {
+                      setLocale(l);
+                      setLangOpen(false);
+                    }}
                     className={`w-full text-left px-2.5 py-1.5 text-xs uppercase tracking-wider font-bold transition-colors ${
-                      locale === l ? "text-primary-600 bg-primary-50" : "text-gray-500 hover:text-primary-600 hover:bg-gray-50"
+                      locale === l
+                        ? "text-primary-600 bg-primary-50"
+                        : "text-gray-500 hover:text-primary-600 hover:bg-gray-50"
                     }`}
                   >
                     {localeNames[l]}

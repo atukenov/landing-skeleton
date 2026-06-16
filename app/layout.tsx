@@ -16,12 +16,12 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Your Company | [Tagline Here]",
-  description: "[Company description — update this]",
-  keywords: ["manufacturing", "kazakhstan", "polymer", "production"],
+  title: "Caspi Polymer | Производитель полиэтиленовых плёнок в Казахстане",
+  description: "Caspi Polymer — казахстанский производитель полиэтиленовых плёнок премиального качества: парниковые, стретч-худ, термоусадочные, мульчирующие и технические плёнки.",
+  keywords: ["полиэтиленовая плёнка", "парниковая плёнка", "стретч-худ", "Казахстан", "Атырау", "производство плёнки", "Caspi Polymer"],
   openGraph: {
-    title: "Your Company",
-    description: "[Company description — update this]",
+    title: "Caspi Polymer | Производитель полиэтиленовых плёнок",
+    description: "Казахстанский производитель полиэтиленовых плёнок премиального качества для агропромышленности, строительства и упаковки.",
     type: "website",
     locale: "ru_RU",
   },
