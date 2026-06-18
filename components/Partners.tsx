@@ -3,7 +3,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { useInView } from "@/hooks/useInView";
 
 const partners = [
-  { name: "Partner 1", logo: null },
+  { name: "KPI", logo: "/kpi-partner.png" },
   { name: "Partner 2", logo: null },
   { name: "Partner 3", logo: null },
   { name: "Partner 4", logo: null },
@@ -19,7 +19,7 @@ export default function Partners() {
   const doubled = [...partners, ...partners];
 
   return (
-    <section className="py-20 bg-white border-t border-gray-100">
+    <section id="partners" className="py-20 bg-white border-t border-gray-100 scroll-mt-28">
       <div
         ref={ref}
         className={`section-wrapper mb-12 text-center transition-all duration-700 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}

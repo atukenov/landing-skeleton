@@ -6,7 +6,7 @@ export default function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="bg-dark-900 text-gray-400">
+    <footer className="bg-dark-900 text-gray-200">
       {/* Main footer */}
       <div className="section-wrapper py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -14,10 +14,10 @@ export default function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-1">
             <div className="mb-5">
-              <img src="/logo.png" alt="Caspi Polymer" className="h-10 w-auto object-contain" />
+              <img src="/logo-bw.png" alt="Caspi Polymer" className="h-10 w-auto object-contain" />
             </div>
 
-            <p className="text-sm leading-relaxed max-w-xs text-gray-500">
+            <p className="text-sm leading-relaxed max-w-xs text-gray-300">
               {t.footer.tagline}
             </p>
 
@@ -48,7 +48,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {t.footer.colCompanyLinks.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="text-sm text-gray-500 hover:text-white transition-colors hover:translate-x-0.5 inline-block">
+                  <a href={link.href} className="text-sm text-gray-300 hover:text-white transition-colors hover:translate-x-0.5 inline-block">
                     {link.label}
                   </a>
                 </li>
@@ -64,7 +64,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {t.footer.colProductLinks.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="text-sm text-gray-500 hover:text-white transition-colors hover:translate-x-0.5 inline-block">
+                  <a href={link.href} className="text-sm text-gray-300 hover:text-white transition-colors hover:translate-x-0.5 inline-block">
                     {link.label}
                   </a>
                 </li>
@@ -78,14 +78,14 @@ export default function Footer() {
               {t.footer.colContacts}
             </h4>
             <ul className="space-y-4">
-              <li className="flex items-start gap-3 text-sm text-gray-500">
+              <li className="flex items-start gap-3 text-sm text-gray-300">
                 <MapPin size={14} className="text-primary-400 mt-0.5 shrink-0" />
                 <span>{t.contacts.addressValue}</span>
               </li>
               <li>
                 <a
                   href={`tel:${t.contacts.phoneValue.replace(/\D/g, "")}`}
-                  className="flex items-center gap-3 text-sm text-gray-500 hover:text-white transition-colors"
+                  className="flex items-center gap-3 text-sm text-gray-300 hover:text-white transition-colors"
                 >
                   <Phone size={14} className="text-primary-400 shrink-0" />
                   {t.contacts.phoneValue}
@@ -94,7 +94,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`mailto:${t.contacts.emailValue}`}
-                  className="flex items-center gap-3 text-sm text-gray-500 hover:text-white transition-colors"
+                  className="flex items-center gap-3 text-sm text-gray-300 hover:text-white transition-colors"
                 >
                   <Mail size={14} className="text-primary-400 shrink-0" />
                   {t.contacts.emailValue}
@@ -113,7 +113,7 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-dark-700">
-        <div className="section-wrapper py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-600">
+        <div className="section-wrapper py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-400">
           <span>© {new Date().getFullYear()} {t.footer.copyright}</span>
           <div className="flex gap-6">
             <a href="/privacy" className="hover:text-gray-400 transition-colors">

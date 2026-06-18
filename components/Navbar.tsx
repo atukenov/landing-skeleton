@@ -31,7 +31,6 @@ export default function Navbar() {
 
   const navLinks = [
     { label: t.nav.home, href: "#home" },
-    { label: t.nav.about, href: "#about" },
     {
       label: t.nav.products,
       href: "#products",
@@ -43,8 +42,9 @@ export default function Navbar() {
         { label: t.nav.cat5, href: "#products" },
       ],
     },
-    { label: t.nav.production, href: "#production" },
+    { label: t.nav.about, href: "#about" },
     { label: t.nav.advantages, href: "#advantages" },
+    { label: t.nav.partners, href: "#partners" },
     { label: t.nav.contacts, href: "#contacts" },
   ];
 
@@ -54,10 +54,10 @@ export default function Navbar() {
         scrolled ? "bg-white/95 backdrop-blur-sm shadow-md" : "bg-white"
       }`}
     >
-      <nav className="section-wrapper flex items-center justify-between h-14 md:h-16 gap-2">
+      <nav className="section-wrapper flex items-center justify-between h-20 md:h-24 gap-2">
         {/* Logo */}
         <a href="#home" className="flex items-center shrink-0">
-          <img src="/logo.png" alt="Caspi Polymer" className="h-10 w-auto object-contain" />
+          <img src="/logo.png" alt="Caspi Polymer" className="h-14 w-auto object-contain" />
         </a>
 
         {/* Desktop nav links */}
@@ -76,18 +76,20 @@ export default function Navbar() {
                 </button>
 
                 {dropdown === link.label && (
-                  <ul className="absolute top-full left-0 mt-1 w-48 bg-white border border-gray-100 shadow-xl rounded py-1.5 z-50 animate-fade-in">
-                    {link.children.map((child) => (
-                      <li key={child.label}>
-                        <a
-                          href={child.href}
-                          className="block px-4 py-2 text-xs text-gray-600 hover:text-primary-600 hover:bg-primary-50 transition-colors tracking-wide"
-                        >
-                          {child.label}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="absolute top-full left-0 pt-1 z-50">
+                    <ul className="w-48 bg-white border border-gray-100 shadow-xl rounded py-1.5 animate-fade-in">
+                      {link.children.map((child) => (
+                        <li key={child.label}>
+                          <a
+                            href={child.href}
+                            className="block px-4 py-2 text-xs text-gray-600 hover:text-primary-600 hover:bg-primary-50 transition-colors tracking-wide"
+                          >
+                            {child.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 )}
               </li>
             ) : (
@@ -141,7 +143,7 @@ export default function Navbar() {
             )}
           </div>
 
-          <a href="#contacts" className="btn-primary py-2 px-4 text-xs">
+          <a href="#contacts" className="btn-primary py-3 px-6 text-sm font-bold">
             {t.nav.requestCta}
           </a>
         </div>

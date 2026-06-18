@@ -13,7 +13,7 @@ export default function Advantages() {
   const { ref: gridRef, inView: gridIn } = useInView();
 
   return (
-    <section id="advantages" className="py-24 bg-slate-50 relative overflow-hidden">
+    <section id="advantages" className="py-24 bg-slate-50 relative overflow-hidden scroll-mt-28">
       {/* Subtle diagonal pattern */}
       <div className="absolute inset-0 pattern-diagonal" />
 

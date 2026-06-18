@@ -6,6 +6,7 @@ import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import Partners from "@/components/Partners";
 import Products from "@/components/Products";
+import Production from "@/components/Production";
 import TopBar from "@/components/TopBar";
 
 export default function Home() {
@@ -19,10 +20,10 @@ export default function Home() {
 
       <main>
         <Hero />
-        <Advantages />
         <Products />
         <About />
-        {/* <StatsBar /> */}
+        <Production />
+        <Advantages />
         <Partners />
         <Contacts />
       </main>

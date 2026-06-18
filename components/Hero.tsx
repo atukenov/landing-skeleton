@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center overflow-hidden bg-dark-900"
+      className="relative min-h-screen flex items-center overflow-hidden bg-dark-900 scroll-mt-28"
     >
       {/* Video background */}
       <video
@@ -92,7 +92,7 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <a
-        href="#advantages"
+        href="#products"
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 hover:text-white transition-colors group"
       >
         <span className="text-xs tracking-widest uppercase font-semibold">{t.hero.scroll}</span>

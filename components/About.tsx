@@ -9,7 +9,7 @@ export default function About() {
   const { ref: textRef, inView: textIn } = useInView();
 
   return (
-    <section id="about" className="py-24 bg-slate-50 overflow-hidden relative">
+    <section id="about" className="py-24 bg-slate-50 overflow-hidden relative scroll-mt-28">
       <div className="absolute inset-0 pattern-dots opacity-50" />
 
       <div className="relative z-10 section-wrapper">

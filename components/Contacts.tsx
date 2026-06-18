@@ -6,15 +6,23 @@ import { useInView } from "@/hooks/useInView";
 
 export default function Contacts() {
   const { t } = useLanguage();
-  const [sent, setSent]       = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [sent, setSent] = useState(false);
   const { ref, inView } = useInView();
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const [name, setName]       = useState("");
+  const [company, setCompany] = useState("");
+  const [phone, setPhone]     = useState("");
+  const [email, setEmail]     = useState("");
+  const [product, setProduct] = useState("");
+  const [message, setMessage] = useState("");
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setLoading(true);
-    await new Promise((r) => setTimeout(r, 1000));
-    setLoading(false);
+    const subject = encodeURIComponent(`Заявка с сайта: ${name}${company ? ` (${company})` : ""}`);
+    const body = encodeURIComponent(
+      `Имя: ${name}\nКомпания: ${company}\nТелефон: ${phone}\nEmail: ${email}\nПродукция: ${product}\nСообщение: ${message}`
+    );
+    window.open(`mailto:${t.contacts.emailValue}?subject=${subject}&body=${body}`);
     setSent(true);
   }
 
@@ -25,7 +33,7 @@ export default function Contacts() {
   ];
 
   return (
-    <section id="contacts" className="py-24 bg-slate-50 relative">
+    <section id="contacts" className="py-24 bg-slate-50 relative scroll-mt-28">
       <div className="absolute inset-0 pattern-dots opacity-40" />
 
       <div ref={ref} className="relative z-10 section-wrapper">
@@ -107,6 +115,8 @@ export default function Contacts() {
                     </label>
                     <input
                       required type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
                       placeholder={t.contacts.namePlaceholder}
                       className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all"
                     />
@@ -117,6 +127,8 @@ export default function Contacts() {
                     </label>
                     <input
                       type="text"
+                      value={company}
+                      onChange={(e) => setCompany(e.target.value)}
                       placeholder={t.contacts.companyPlaceholder}
                       className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all"
                     />
@@ -130,6 +142,8 @@ export default function Contacts() {
                     </label>
                     <input
                       required type="tel"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
                       placeholder={t.contacts.phoneFPlaceholder}
                       className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all"
                     />
@@ -140,6 +154,8 @@ export default function Contacts() {
                     </label>
                     <input
                       type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       placeholder={t.contacts.emailFPlaceholder}
                       className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all"
                     />
@@ -150,7 +166,11 @@ export default function Contacts() {
                   <label className="block text-xs font-bold text-gray-600 uppercase tracking-widest mb-2">
                     {t.contacts.productLabel}
                   </label>
-                  <select className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-600 focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all">
+                  <select
+                    value={product}
+                    onChange={(e) => setProduct(e.target.value)}
+                    className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm text-gray-600 focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all"
+                  >
                     <option value="">{t.contacts.productPlaceholder}</option>
                     {t.contacts.productOptions.map((opt) => (
                       <option key={opt} value={opt}>{opt}</option>
@@ -164,6 +184,8 @@ export default function Contacts() {
                   </label>
                   <textarea
                     rows={4}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                     placeholder={t.contacts.messagePlaceholder}
                     className="w-full border border-gray-200 rounded-lg px-4 py-3 text-sm resize-none focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all"
                   />
@@ -171,11 +193,10 @@ export default function Contacts() {
 
                 <button
                   type="submit"
-                  disabled={loading}
-                  className="btn-primary w-full justify-center disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="btn-primary w-full justify-center"
                 >
-                  {loading ? t.contacts.submittingBtn : t.contacts.submitBtn}
-                  {!loading && <Send size={14} />}
+                  {t.contacts.submitBtn}
+                  <Send size={14} />
                 </button>
 
                 <p className="text-xs text-gray-400 text-center">{t.contacts.privacy}</p>
@@ -184,9 +205,15 @@ export default function Contacts() {
           </div>
         </div>
 
-        {/* Map placeholder */}
-        <div className={`mt-12 h-64 bg-gray-100 rounded-2xl flex items-center justify-center border border-gray-200 overflow-hidden transition-all duration-700 delay-300 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <p className="text-gray-400 text-sm">{t.contacts.mapPlaceholder}</p>
+        {/* Map */}
+        <div className={`mt-12 rounded-2xl overflow-hidden border border-gray-200 h-64 transition-all duration-700 delay-300 ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          <iframe
+            src="https://maps.google.com/maps?q=Атырау,+ул.+Жалантос+Батыра,+9А&output=embed&hl=ru"
+            className="w-full h-full"
+            loading="lazy"
+            allowFullScreen
+            title="Карта — Caspi Polymer"
+          />
         </div>
       </div>
     </section>
