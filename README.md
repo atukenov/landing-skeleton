@@ -19,46 +19,23 @@ npm run dev
 ## Folder Structure
 
 ```
-landing-skeleton/
-├── app/
-│   ├── layout.tsx      ← fonts, metadata, root HTML
-│   ├── page.tsx        ← assembles all sections
-│   └── globals.css     ← Tailwind + CSS variables + utility classes
-├── components/
-│   ├── TopBar.tsx      ← contact info strip (desktop only)
-│   ├── Navbar.tsx      ← sticky dark nav with dropdown + mobile drawer
-│   ├── Hero.tsx        ← full-screen hero + stats row
-│   ├── Advantages.tsx  ← 8-item icon grid (dark bg)
-│   ├── Products.tsx    ← 6-card product category grid
-│   ├── About.tsx       ← two-column story + image placeholder
-│   ├── StatsBar.tsx    ← 4-stat highlight bar (blue bg)
-│   ├── Partners.tsx    ← auto-scrolling logo marquee
-│   ├── Contacts.tsx    ← contact info + enquiry form
-│   └── Footer.tsx      ← 4-column footer + bottom bar
-└── public/
-    ├── logo.svg        ← add your logo here
-    └── partners/       ← add partner logos here
+app/
+├── layout.tsx          ← fonts (Unbounded + Manrope), metadata, header/footer
+├── page.tsx            ← home page sections
+├── products/page.tsx   ← product catalog with tabs + model tables
+└── globals.css         ← Tailwind layers, buttons, form fields, reveal animation
+components/
+├── SiteHeader.tsx      ← utility bar, sticky nav, language switch, mobile menu
+├── SiteFooter.tsx      ← footer / contacts (#contacts)
+├── RequestForm.tsx     ← quote request form (opens a pre-filled email)
+├── ProductCatalog.tsx  ← /products?type=<slug> tabs and spec tables
+├── Logo.tsx, Reveal.tsx
+└── home/               ← Hero, KeyFigures, ProductGrid, Industries, About, Production, Advantages
+lib/i18n.ts             ← all copy in RU / KK / EN, product data and images
+public/images/          ← product and production photos
 ```
 
-## What to Replace (search for `← replace`)
-
-Every placeholder is marked with a `// ← replace` comment. Key ones:
-
-| Location | What to replace |
-|---|---|
-| `app/layout.tsx` | `metadata.title`, `metadata.description` |
-| `components/TopBar.tsx` | Address, phone, email |
-| `components/Navbar.tsx` | Logo, nav links, phone |
-| `components/Hero.tsx` | Headline, sub-headline, stats |
-| `components/Advantages.tsx` | 8 advantage titles + descriptions |
-| `components/Products.tsx` | Product category names, descriptions, images |
-| `components/About.tsx` | Company story paragraphs, highlights list |
-| `components/StatsBar.tsx` | 4 stat values + labels |
-| `components/Partners.tsx` | Partner names + logo paths |
-| `components/Contacts.tsx` | Address, phone, email, product select options |
-| `components/Footer.tsx` | All links, contact info, social URLs |
-| `tailwind.config.js` | Brand colors (primary, accent) |
-| `app/globals.css` | `--color-primary`, `--color-accent` CSS vars |
+All text and product specs live in `lib/i18n.ts`. Brand colours are in `tailwind.config.js` (`amber`, `ink`, `sand`, `muted`).
 
 ## Adding Images
 

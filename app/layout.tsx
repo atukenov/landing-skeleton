@@ -1,41 +1,58 @@
 import type { Metadata } from "next";
-import { Playfair_Display, DM_Sans } from "next/font/google";
+import { Manrope, Unbounded } from "next/font/google";
 import { Providers } from "@/components/Providers";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
+import { translations } from "@/lib/i18n";
 import "./globals.css";
 
-const playfair = Playfair_Display({
+const display = Unbounded({
   subsets: ["latin", "cyrillic"],
-  variable: "--font-heading",
+  weight: ["400", "500", "600"],
+  variable: "--font-display",
   display: "swap",
 });
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
+const body = Manrope({
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-body",
   display: "swap",
 });
 
+const { meta } = translations.ru;
+
 export const metadata: Metadata = {
-  title: "Caspi Polymer | Производитель полиэтиленовых плёнок в Казахстане",
-  description: "Caspi Polymer — казахстанский производитель полиэтиленовых плёнок премиального качества: парниковые, стретч-худ, термоусадочные, мульчирующие и технические плёнки.",
-  keywords: ["полиэтиленовая плёнка", "парниковая плёнка", "стретч-худ", "Казахстан", "Атырау", "производство плёнки", "Caspi Polymer"],
+  title: meta.title,
+  description: meta.description,
+  keywords: [
+    "полиэтиленовая плёнка",
+    "FFS плёнка",
+    "стретч-худ",
+    "парниковая плёнка",
+    "термоусадочная плёнка",
+    "Атырау",
+    "Казахстан",
+    "Caspi Polymer",
+  ],
   openGraph: {
-    title: "Caspi Polymer | Производитель полиэтиленовых плёнок",
-    description: "Казахстанский производитель полиэтиленовых плёнок премиального качества для агропромышленности, строительства и упаковки.",
+    title: meta.title,
+    description: meta.description,
     type: "website",
     locale: "ru_RU",
+    images: ["/images/rolls.jpg"],
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ru" className={`${playfair.variable} ${dmSans.variable}`}>
-      <body className="font-body bg-white text-dark-800 antialiased">
-        <Providers>{children}</Providers>
+    <html lang="ru" className={`${display.variable} ${body.variable}`}>
+      <body>
+        <Providers>
+          <SiteHeader />
+          <main>{children}</main>
+          <SiteFooter />
+        </Providers>
       </body>
     </html>
   );
